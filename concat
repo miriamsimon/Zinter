@@ -1,0 +1,21 @@
+
+
+# create a csv file w/ format: part1_name,part2_name,final_name --> filename.csv
+# make sure you are in directory with filname.csv and .fastq files present
+
+
+python3 
+import shutil
+file_name = "filename.csv"
+
+g = open(file_name, mode='r', encoding='utf-8-sig')
+
+for line in g:
+  elements = line.strip().split(',')
+  with open(elements[2],'wb') as wfd:
+    for f in elements[0:2]:
+      with open(f,'rb') as fd:
+				shutil.copyfileobj(fd, wfd)
+g.close()
+
+
