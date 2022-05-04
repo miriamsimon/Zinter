@@ -1,2 +1,15 @@
 # code to upload .fastq files from DeRisi server to CZID
-# Step 1: 
+# create metadata csv with sample names and information using template:  https://czid.org/metadata/metadata_template_csv
+# make new project folder in czid for uploading samples
+
+###############
+
+czid login
+czid accept-user-agreement
+czid short-read-mngs upload-samples \
+  -p 'LRTI Nasal Swab Nova Seq CAT' \
+  --metadata-csv  your_metadata.csv \
+  your_directory_of_samples
+ 
+###############
+ 
