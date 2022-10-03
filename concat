@@ -2,6 +2,8 @@
 
 # create a csv file w/ format: part1_name,part2_name,final_name --> filename.csv
 # make sure you are in directory with filname.csv and .fastq files present
+# can put code into vim and then correct indentations. no need to include g.close of using vim
+
 
 
 python3 
