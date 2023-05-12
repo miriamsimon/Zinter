@@ -1,0 +1,25 @@
+This guide was created to aid in setting up the aws-client in order to transfer sequencing files from the biohub stored through aws to our local servers.
+
+#Prior to beginning this, ensure that you have python installed in your server. 
+#If it isn't, you can install it by installing anaconda (see: Anaconda Server Setup Guide).
+#Directions for setting up the aws-client can be found at http://docs.aws.amazon.com/cli/latest/userguide/installing.html
+#Here I will summarize the steps that I took to download and install the aws-client while avoiding sudo commands
+
+#Download the aws-client package and give it the directory name "awscliv2.zip"
+$ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+#Unzip the package
+$ unzip awscliv2.zip
+
+#Install without sudo by specifying directories that you already have write permissions to.
+#Ensure that the paths you provide to the -i and -b parameters contain no volume name or directory names that contain any space characters or other white space characters or the installation will fail
+# -i specifies the directory to copy all of the files to.
+# -b specifies that the main aws program in the install directory is symbollically linked to the file aws in the specified path. You must have write permissions to the specified directory.
+#Here is an example of the line of code I wrote. This may change depending on which server you are on and which directories you have access to
+$ ./aws/install -i /data/miriam/aws-cli -b /data/miriam
+
+#You should now have the aws-client installed and ready. Confirm the installation with the folliowing command
+$ aws --version
+
+#You are now able to download seq files directly from biohub tokens onto your server! Congrats! :) Though, you should note that you will have to change "aws" on the token to the path where your aws command is. For this example, that would be "/data/gus/aws/aws". Here is an example of what that might look like.
+$ /data/gus/aws/aws s3 sync s3://czb-seqbot/fastqs/210416_A00111_0701_AH5HV2DRXY .
