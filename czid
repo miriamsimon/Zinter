@@ -1,4 +1,4 @@
-# code to upload .fastq files from DeRisi server to CZID
+# code to upload .fastq files from DeRisi lab server to CZID
 # create metadata csv with sample names and information using template:  https://czid.org/metadata/metadata_template_csv
 # make new project folder in czid for uploading samples
 
@@ -12,4 +12,21 @@ czid short-read-mngs upload-samples \
   your_directory_of_samples
  
 ###############
- 
+
+# code to upload code to upload .fastq files from biohub (aws server) to DeRisi lab server (assembler2)
+# copy and past token from email into a text file
+
+export AWS_ACCESS_KEY_ID=...
+export AWS_SECRET_ACCESS_KEY=....
+export AWS_SESSION_TOKEN=
+
+# THE LAST LINE SHOULD READ IN THIS FORMAT RIGHT BEFORE THE S3 TOKEN
+/data/yourdirectory/aws/aws s3 SYNC S3:// ...
+
+# copy into terminal after logging into assembler and opening a tmux session in desired direcory of seq files
+# example below:
+
+export AWS_ACCESS_KEY_ID=ASIAWFHJEQHUV34WQ4P3
+export AWS_SECRET_ACCESS_KEY=03iLhFqYNJTppnMRDCzP4HZsF3OUD7WX1o7WkK9i
+export AWS_SESSION_TOKEN=FwoGZXIvYXdzEFUaDHFQXFC1Mrsn0pqe+iKkA+ROuil8HkzlSp3SPQf5TjvDEwXCKXh6PfNPwmr5EZwHVMBjLEOoV8L6zC+P13i6BUgqwXubnH7+Gl1lCXc34revTkL0gABHV4wVrow+a1wGICN5bvL+fPqnB/mjCINWdoY6d1cYYwUBoQUjEMjeL0NrLfXaFNyi1rTS20WvId7uJ5I7lZAts13OiTb+YynxGsD3ybrN7is+KnW4mTCZWA0qn6TXuu0kWK+wofPHDleWlF4qFYdSXmH+rCByPUbha43eJaCyQsghS8yOovm7ytgUkNASyLUpNdyTvxFB8wWetLLJYAdOjGUJif/flhMD2uifbq3+qD5aryf3MZ+IQouh+G1S53a4hk6KAhprBASH+n+mECzHOamDCW8JnRgoUoD/jc3gfsM8Ijq6dT4n7H7gRCsZ5tQvUQmymFChzdwuUkxiC27P0swb0JaqqXjNFj3//HQkayVumTHy4GAwj49CL/F491Bwn3IPR5QKGwIYKWcmsTU7rIX6cTl9jcTo5IIg0YJOK6Hfc8JgupMOjwXlqxtMR2j5VJRp5CRmNrJ7hOoggyiuvd+bBjIpYYumtHI6olWtm6fVAZBQvVNiOghJ9IAkRn+en+wjmLLRgJsOKXb8uCE=
+/data/miriam/aws/aws s3 sync s3://czb-seqbot/fastqs/221115_A00111_0955_BH7CNCDSX5
