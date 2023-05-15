@@ -1,0 +1,20 @@
+# server login
+  # step 1: connect to vpn
+  # step 2: enter username
+  yourdirectory@assembler1.ucsf.edu
+  # step 3: enter password
+
+#copy file 
+scp filname yourdirectory@assembler1.ucsf.edu:/data/yourdirectory/
+
+#copy directory 
+scp -r /data/yourdirectory/  /pathname
+
+# enter directory
+cd directory
+
+# go back a directory
+cd ..
+
+# list files or direcotries within a directory 
+ls 
